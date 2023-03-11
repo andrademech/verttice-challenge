@@ -54,6 +54,21 @@ export const NavbarLinkExtended = styled(Link)`
   color: white;
   text-decoration: none;
   padding: 1rem;
+
+  &:first-child {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: 700px) {
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
 `
 
 export const OpenLinksButton = styled.button`
@@ -78,13 +93,15 @@ export const OpenLinksButton = styled.button`
 `
 
 export const NavbarExtendedContainer = styled.div`
-  background-color: ${(props) => props.theme['gray-900']};
-  width: 80%;
-  border-radius: 6px;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: ${(props) => props.theme['gray-900']};
+  width: 100%;
+  flex-wrap: wrap;
+  border-radius: 6px;
+  height: 100%;
 
   @media (min-width: 700px) {
     display: none;
