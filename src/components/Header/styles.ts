@@ -41,7 +41,7 @@ export const NavbarLinkContainer = styled.div`
 
 export const NavbarLink = styled(Link)`
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-decoration: none;
   margin: 10px;
 
@@ -69,6 +69,7 @@ export const NavbarLinkExtended = styled(Link)`
       width: 1rem;
       height: 1rem;
     }
+  }
 `
 
 export const OpenLinksButton = styled.button`

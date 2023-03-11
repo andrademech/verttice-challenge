@@ -37,6 +37,9 @@ export const Input = styled.div`
   gap: 0.5rem;
 
   overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 `
 
 export const ButtonContainer = styled.div`
