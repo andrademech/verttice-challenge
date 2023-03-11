@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Header = styled.header`
-  margin-top: 4rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@ export const Header = styled.header`
 `
 
 export const Container = styled.main`
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -71,6 +71,28 @@ export const FormContainer = styled.div`
       }
     }
   }
+
+  /* =============== MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    gap: 1rem;
+    label {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+      button {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+        justify-content: center;
+        width: 50%;
+        svg {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+    }
+  }
 `
 const BaseInput: any = styled.input`
   background: transparent;
@@ -90,6 +112,13 @@ const BaseInput: any = styled.input`
     border-color: ${(props) => props.theme['green-500']};
     transition: border-color 0.5s;
   }
+
+  /* =============== MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    font-size: 0.75rem;
+    height: 1.5rem;
+  }
 `
 
 export const FormInput = styled(BaseInput)`
@@ -101,7 +130,7 @@ export const FormInput = styled(BaseInput)`
 `
 
 export const Output = styled.div`
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   padding: 1rem;
   border-radius: 8px;
   background-color: ${(props) => props.theme['gray-900']};
@@ -117,6 +146,8 @@ export const Output = styled.div`
   overflow-y: auto; // Adiciona barra de rolagem
 
   ul {
+    flex-direction: row;
+    flex-wrap: wrap;
     border-radius: 8px;
     list-style: none;
     width: 100%;
@@ -137,5 +168,29 @@ export const Output = styled.div`
   }
   ul::-webkit-scrollbar {
     width: 0;
+  }
+
+  /* =============== MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    max-width: 20rem;
+    h4 {
+      font-size: 0.75rem;
+    }
+    margin-top: 0;
+    ul {
+      flex-wrap: wrap;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      font-size: 0.75rem;
+      max-height: 100px;
+      li {
+        width: 100px;
+        strong {
+          font-size: 0.75rem;
+        }
+      }
+    }
   }
 `

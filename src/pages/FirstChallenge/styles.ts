@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+`
+
 export const Header = styled.header`
   margin-top: 4rem;
   display: flex;
@@ -8,9 +13,20 @@ export const Header = styled.header`
   flex-direction: column;
   color: ${(props) => props.theme['gray-100']};
   gap: 2rem;
+
   p {
     max-width: 40rem;
     text-align: justify;
+    font-size: 1rem;
+  }
+
+  /* =============== MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    h2,
+    p {
+      font-size: 0.75rem;
+    }
   }
 `
 
@@ -27,10 +43,10 @@ export const Container = styled.main`
 export const Output = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 40rem;
 
   gap: 1rem;
   width: 100%;
-  max-width: 700px;
   justify-content: center;
   padding-bottom: 2rem; // Adiciona margem inferior
 
@@ -42,8 +58,9 @@ export const List = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 700px;
+  max-width: 1024px;
   justify-content: center;
+  align-items: center;
 
   ul {
     border-radius: 8px;
@@ -57,7 +74,7 @@ export const List = styled.div`
 
     gap: 1rem;
     overflow-y: auto; // Adiciona barra de rolagem
-    max-height: 185px; // Define altura máxima
+    max-height: 150px; // Define altura máxima
     padding: 0 1rem; // Adiciona espaçamento horizontal
 
     li {
@@ -66,6 +83,16 @@ export const List = styled.div`
   }
   ul::-webkit-scrollbar {
     width: 0;
+  }
+
+  /* =============== MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    ul {
+      li {
+        font-size: 0.75rem;
+      }
+    }
   }
 `
 
@@ -99,6 +126,15 @@ const BaseInput: any = styled.input`
     box-shadow: none;
     border-color: ${(props) => props.theme['green-500']};
     transition: border-color 0.5s;
+  }
+
+  /* =============== MEDIA QUERIES (MEDIUM DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    font-size: 0.75rem;
+    padding: 0;
+    margin: 0;
+    height: 1.5rem;
   }
 `
 

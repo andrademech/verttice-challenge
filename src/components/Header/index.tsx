@@ -1,53 +1,103 @@
-// Styles, Logo & Icons
-import { HeaderContainer } from './styles'
-import { GithubLogo, LinkedinLogo, InstagramLogo, House } from 'phosphor-react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import {
+  NavbarContainer,
+  LeftContainer,
+  RightContainer,
+  NavbarExtendedContainer,
+  NavbarInnerContainer,
+  NavbarLinkContainer,
+  NavbarLink,
+  OpenLinksButton,
+  NavbarLinkExtended,
+} from './styles'
+import {
+  GithubLogo,
+  LinkedinLogo,
+  InstagramLogo,
+  House,
+  List,
+  X,
+} from 'phosphor-react'
 
-export function Header() {
+export function Navbar() {
+  const [extendNavbar, setExtendNavbar] = useState(false)
+
   return (
-    <HeaderContainer>
-      <nav>
-        <Link
-          to="https://www.vertticegr.com.br/"
-          title="verttice site"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <h2>Verttice challenge</h2>
-        </Link>
-
-        <Link to="/" title="home">
-          <House size={32} />
-        </Link>
-      </nav>
-
-      <nav>
-        <h4>Made by: Herberth Andrade</h4>
-        <a
-          href="https://github.com/andrademech"
-          title="github"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <GithubLogo size={24} />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/herberth-andrade-759b10127/"
-          title="linkedin"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <LinkedinLogo size={32} />
-        </a>
-        <a
-          href="https://www.instagram.com/herberth.dev/"
-          title="instagram"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <InstagramLogo size={32} />{' '}
-        </a>
-      </nav>
-    </HeaderContainer>
+    <NavbarContainer extendNavbar={extendNavbar}>
+      <NavbarInnerContainer>
+        <LeftContainer>
+          <NavbarLinkContainer>
+            <NavbarLink
+              to="https://www.vertticegr.com.br/"
+              title="verttice site"
+            >
+              Verttice
+            </NavbarLink>
+            <NavbarLink to="/" title="home">
+              <House size={32} />
+            </NavbarLink>
+            <OpenLinksButton
+              onClick={() => {
+                setExtendNavbar((curr) => !curr)
+              }}
+            >
+              {extendNavbar ? <X size={24} /> : <List size={24} />}
+            </OpenLinksButton>
+          </NavbarLinkContainer>
+        </LeftContainer>
+        <RightContainer>
+          <NavbarLinkContainer>
+            <NavbarLink to="https://github.com/andrademech">
+              <GithubLogo size={32} />
+            </NavbarLink>
+            <NavbarLink to="https://www.linkedin.com/in/herberth-andrade-759b10127/">
+              <LinkedinLogo size={32} />
+            </NavbarLink>
+            <NavbarLink to="https://www.instagram.com/herberth.dev/">
+              <InstagramLogo size={32} />
+            </NavbarLink>
+          </NavbarLinkContainer>
+        </RightContainer>
+      </NavbarInnerContainer>
+      {extendNavbar && (
+        <NavbarExtendedContainer>
+          <NavbarLinkExtended
+            to="https://www.vertticegr.com.br/"
+            title="verttice site"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Verttice
+          </NavbarLinkExtended>
+          <NavbarLinkExtended to="/" title="home" rel="noreferrer">
+            <House size={32} />
+          </NavbarLinkExtended>
+          <NavbarLinkExtended
+            to="https://github.com/andrademech"
+            title="github"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <GithubLogo size={32} />
+          </NavbarLinkExtended>
+          <NavbarLinkExtended
+            to="https://www.linkedin.com/in/herberth-andrade-759b10127/"
+            title="linkedin"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <LinkedinLogo size={32} />
+          </NavbarLinkExtended>
+          <NavbarLinkExtended
+            to="https://www.instagram.com/herberth.dev/"
+            title="instagram"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <InstagramLogo size={32} />
+          </NavbarLinkExtended>
+        </NavbarExtendedContainer>
+      )}
+    </NavbarContainer>
   )
 }

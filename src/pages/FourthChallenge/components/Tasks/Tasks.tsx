@@ -1,33 +1,34 @@
 import {
   useState,
-  useEffect,
   ChangeEvent,
   InvalidEvent,
   KeyboardEvent,
-  SyntheticEvent,
   FormEvent,
 } from 'react'
 import { Clipboard } from 'phosphor-react'
 
-// Styles
-import styles from './Tasks.module.css'
-
 // Components
-import { Button } from './Button'
-import { Task } from './Task'
+import { Button } from '../Button/Button'
+import { Task } from '../Task/Task'
+import { Container, Content, Main, NoTasks } from './styles'
 
-interface Task {
+interface TaskInterface {
   task: string
   completed: boolean
 }
 
 export function Tasks() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<TaskInterface[]>([])
   const [newTaskText, setNewTaskText] = useState<string>('')
   const [completedTasks, setCompletedTasks] = useState<number>(0)
 
   const handleCreateNewComment = (e: FormEvent) => {
     e.preventDefault()
+
+    if (newTaskText === '') {
+      alert('Este campo é obrigatório.')
+      return
+    }
     setTasks([...tasks, { task: newTaskText, completed: false }])
     setNewTaskText('')
 
@@ -47,6 +48,22 @@ export function Tasks() {
     setTasks(tasks.filter((task, i) => i !== index))
 
     console.log('Task removed successfully! :D')
+  }
+
+  const handleEditTask = (index: number) => {
+    const task = tasks[index]
+    const newTask = prompt('Edit task', task.task)
+
+    if (newTask) {
+      setTasks(
+        tasks.map((task, i) => {
+          if (i === index) {
+            return { ...task, task: newTask }
+          }
+          return task
+        }),
+      )
+    }
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -72,52 +89,54 @@ export function Tasks() {
   const completed = tasks.filter((task) => task.completed).length
 
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleCreateNewComment}>
+    <Container>
+      <form onSubmit={handleCreateNewComment}>
         <textarea
-          className={styles.textarea}
-          placeholder="Adicione uma nova tarefa"
+          placeholder="Add a new task"
           value={newTaskText}
           onChange={handleNewTaskChange}
           onInvalid={handleNewTaskInvalid}
           onKeyDown={(e) => handleKeyDown(e)}
-          required
+          required={true}
         />
         <Button handleCreateNewComment={handleCreateNewComment} />
       </form>
 
-      <header className={styles.header}>
+      <Content>
         <h4>
-          Tarefas criadas
+          Created tasks
           <span>{tasks.length || 0}</span>
         </h4>
         <h4>
-          Tarefas concluídas
+          Completed tasks
           <span>
             {completed} de {tasks.length}
           </span>
         </h4>
-      </header>
+      </Content>
 
-      {tasks.length ? (
-        tasks.map((task, index) => {
-          return (
-            <Task
-              key={index}
-              task={task}
-              handleDeleteTask={handleDeleteTask}
-              handleTaskCompleted={handleTaskCompleted}
-              index={index}
-            />
-          )
-        })
-      ) : (
-        <div className={styles.noTasks}>
-          <Clipboard size={56} />
-          <h3>Você ainda não tem tarefas cadastradas</h3>
-          <span>Crie tarefas e organize seus itens a fazer</span>
-        </div>
-      )}
-    </div>
+      <Main>
+        {tasks.length ? (
+          tasks.map((task, index) => {
+            return (
+              <Task
+                key={index}
+                task={task}
+                handleDeleteTask={handleDeleteTask}
+                handleTaskCompleted={handleTaskCompleted}
+                handleEditTask={handleEditTask}
+                index={index}
+              />
+            )
+          })
+        ) : (
+          <NoTasks>
+            <Clipboard size={48} />
+            <h3>Oopsie... You have no tasks yet! </h3>
+            <span>Add a task for better organize your day.</span>
+          </NoTasks>
+        )}
+      </Main>
+    </Container>
   )
 }

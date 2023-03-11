@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Header = styled.header`
-  margin-top: 4rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@ export const Header = styled.header`
 `
 
 export const Container = styled.main`
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -31,6 +31,17 @@ export const Container = styled.main`
       cursor: pointer;
     }
   }
+
+  /* =============== MEDIA QUERIES (SMALL DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    h2 {
+      font-size: 0.75rem;
+    }
+    strong {
+      font-size: 1rem;
+    }
+  }
 `
 
 export const StyledTable = styled.div`
@@ -40,6 +51,12 @@ export const StyledTable = styled.div`
   &::-webkit-scrollbar {
     width: 0;
     background: transparent; /* mudando a cor de fundo */
+  }
+
+  /* =============== MEDIA QUERIES (SMALL DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    max-height: 200px;
   }
 `
 
@@ -72,6 +89,18 @@ export const MoviesTable = styled.table`
     &:last-child {
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
+    }
+  }
+
+  /* =============== MEDIA QUERIES (SMALL DEVICES) =============== */
+
+  @media screen and (max-width: 900px) {
+    thead {
+      height: 16px;
+    }
+    td {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
     }
   }
 `

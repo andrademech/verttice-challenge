@@ -27,7 +27,7 @@ export function Home() {
               <h2>Challenge 4</h2>
             </Challenge>
           </NavLink>
-          <NavLink to="/" title="fifth challenge">
+          <NavLink to="/fifth" title="fifth challenge">
             <Challenge>
               <h2>Challenge 5</h2>
             </Challenge>

@@ -13,13 +13,28 @@ export const HomeContainer = styled.main`
       text-decoration: none;
     }
   }
+  @media (max-width: 768px) {
+    /* Estilos para dispositivos móveis */
+    padding: 1rem;
+  }
 `
 
 export const ContainerChallenge = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  margin-top: 3rem;
+
+  @media (max-width: 1024px) {
+    /* Estilos para tablets */
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    /* Estilos para dispositivos móveis */
+    gap: 0.75rem;
+    margin-top: 2rem;
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Challenge = styled.div`
@@ -31,5 +46,11 @@ export const Challenge = styled.div`
   &:hover {
     background: ${(props) => props.theme['green-300']};
     transition: 0.5s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    /* Estilos para dispositivos móveis */
+    padding: 1rem;
+    font-size: 0.6rem;
   }
 `

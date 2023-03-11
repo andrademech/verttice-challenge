@@ -5,6 +5,7 @@ import {
   List,
   Output,
   FormInput,
+  Main,
 } from './styles'
 
 import { ChangeEvent, useState } from 'react'
@@ -35,15 +36,16 @@ export function FirstChallenge() {
     const count = countChars(str)
     setCharCount(count)
   }
+
   return (
-    <>
+    <Main>
       <Header>
-        <h1>Challenge number 1</h1>
+        <h2>Challenge number 1</h2>
         <p>
           Description: Escreva uma função que receba uma string e retorne a
           contagem de cada caractere nessa string. Por exemplo, para a string
           Hello World, a função deve retornar um objeto que mapeia cada
-          caractere ao seu número de ocorrências
+          caractere ao seu número de ocorrências.
         </p>
       </Header>
       <Container>
@@ -76,6 +78,6 @@ export function FirstChallenge() {
           </List>
         </Output>
       </Container>
-    </>
+    </Main>
   )
 }

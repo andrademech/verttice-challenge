@@ -1,53 +1,92 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const HeaderContainer = styled.header`
+interface NavbarProps {
+  extendNavbar: boolean
+}
+
+export const NavbarContainer = styled.nav<NavbarProps>`
+  width: 100%;
+  height: ${(props) => (props.extendNavbar ? '40px' : '40px')};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const LeftContainer = styled.div`
+  flex: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: ${(props) => props.theme['green-300']};
+  padding-left: 5%;
+`
 
-  nav:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2.5rem;
+export const RightContainer = styled.div`
+  flex: 30%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+`
 
-    justify-content: center;
-    align-items: center;
+export const NavbarInnerContainer = styled.div`
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+`
 
-    a {
-      width: auto;
-      text-decoration: none;
-    }
+export const NavbarLinkContainer = styled.div`
+  display: flex;
+`
+
+export const NavbarLink = styled(Link)`
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  margin: 10px;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+
+export const NavbarLinkExtended = styled(Link)`
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+`
+
+export const OpenLinksButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
   }
 
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  &:hover {
+    color: ${(props) => props.theme['green-500']};
+  }
 
-    a {
-      width: 3rem;
-      height: 3rem;
+  @media (max-width: 700px) {
+    display: block;
+  }
+`
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+export const NavbarExtendedContainer = styled.div`
+  background-color: ${(props) => props.theme['gray-900']};
+  width: 80%;
+  border-radius: 6px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-      color: ${(props) => props.theme['green-300']};
-
-      border-top: 0.25px solid transparent;
-      border-bottom: 3px solid transparent;
-
-      &:hover {
-        border-bottom: 3px solid ${(props) => props.theme['green-500']};
-        transition: border-bottom 0.5s;
-      }
-
-      &.active {
-        color: ${(props) => props.theme['green-500']};
-        transition: border-bottom 0.5s;
-      }
-    }
+  @media (min-width: 700px) {
+    display: none;
   }
 `
